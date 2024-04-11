@@ -1,0 +1,38 @@
+{% load static %}
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}
+				Rwanda
+			{% endblock title %}
+		</title>
+		<link href="{% static 'main.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'favicon.ico' %}" rel="icon" type="image/x-icon">
+	</head>
+	<body>
+	<div id="wrapper">
+		<header id="header">
+			<div id="logo"><img src="{% static 'Flag.png' %}" width="250" height="150" alt=""/></div>
+			<div id="topbanner"><img src="{% static 'Rwanda.jpg' %}" width="800" height="500" alt=""/></div>
+		</header>
+		<aside id="leftsidebar">
+			<nav id="nav">
+				<ul>
+					<li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'arealist' %}">Areas</a></li>
+                    <li><a href="{% url 'attractionlist' %}">Attractions</a></li>
+				</ul>
+			</nav>
+		</aside>
+
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+		<footer id="footer">Copyright &copy; 2024 A'Yanna Rouse</footer>
+	</div>
+	</body>
+</html>

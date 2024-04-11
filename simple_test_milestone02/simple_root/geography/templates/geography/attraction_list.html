@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Attractions
+{% endblock title %}
+
+{% block content %}
+    <style>
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <h2>Attractions</h2>
+    <a href="{% url 'attractioncreate' %}"><button class="btn">Add Attraction</button></a>
+    <br></br>
+    <table>
+        <thead>
+            <tr>
+                <th>Attraction Name</th>
+                <th>Area</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attraction in attraction_list %}
+            <tr>
+                <td>{{ attraction.attraction_name }}</td>
+                <td>({{ attraction.area.area_name }})</td>
+                <td>
+                    <a href="{% url 'attractiondetail' attraction.id %}"><button class="btn">View</button></a>
+                    <a href="{% url 'attractionupdate' attraction.id %}"><button class="btn">Edit</button></a>
+                    <a href="{% url 'attractiondelete' attraction.id %}"><button class="btn">Delete</button></a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No attractions found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
